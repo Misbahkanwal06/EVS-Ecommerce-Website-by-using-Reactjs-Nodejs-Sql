@@ -18,14 +18,14 @@ const proCreate = async (req, res) => {
     }
 }
 
-
 const getProducts = async (req, res) => {
-    // console.log("asg", req.params);
     // return req.params;
     const { id } = req.params;
+    const { min, max } = req.query;
     try {
-        const dbresult = await getProdData(id);
-        // return dbresult[0]; 
+        const dbresult = await getProdData(id, min, max);
+        // return dbresult;
+        // return dbresult[0];
         res.send(handleResponse(201, "Here you got all products", dbresult[0]));
     } catch (error) {
         console.log(error);

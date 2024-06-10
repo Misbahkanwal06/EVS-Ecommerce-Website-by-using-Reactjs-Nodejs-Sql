@@ -30,7 +30,7 @@ function LoginForm() {
 
 
     return (
-        <Container component="main" maxWidth="xs" sx={{mb:5}}>
+        <Container component="main" maxWidth="xs" sx={{ mb: 5 }}>
             <Box
                 sx={{
                     marginTop: 8,
@@ -74,7 +74,7 @@ function LoginForm() {
                             variant='contained'
                             color="primary"
                             // sx={{ mt: 3, mb: 2 }}
-                            sx={{ backgroundColor: 'pink', color: 'white', mt:3,mb:2 }}
+                            sx={{ backgroundColor: 'pink', color: 'white', mt: 3, mb: 2 }}
                         >
                             Sign In
                         </Button>
