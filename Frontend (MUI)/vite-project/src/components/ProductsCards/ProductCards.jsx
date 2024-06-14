@@ -221,37 +221,12 @@ function ProductCards({ min, max }) {
         fetchProducts();
     }, [selectedProCatId, min, max]);
 
-    const handleAddToCart = (prodId) => {
-        const storageResponse = localStorage.getItem("userdata");
-        let customer = JSON.parse(storageResponse);
-        let custId = customer && customer.cstId;
-        let quantity = 1;
-        localStorage.setItem(prodId, JSON.stringify({ quantity: 1 }));
-
-        if (!customer) navigate('/signup');
-        else {
-            const payloads = { prodId, custId, quantity };
-            console.log("payloads", payloads);
-
-            const addToCartBtn = async () => {
-                try {
-                    const res = await axios.post('http://localhost:3008/api/v1/cart/create', payloads);
-                    console.log("addtocartdata", res.data);
-                    navigate('/cart');
-                } catch (error) {
-                    console.error('Error getting categories', error);
-                }
-            };
-            addToCartBtn();
-        }
-    };
-
     return (
         <Grid container spacing={4}>
             {products.map((product) => (
                 <Grid item xs={12} sm={4} md={3} key={product.proID}>
                     <Card sx={{ '&:hover': { boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' } }}>
-                        <CardActionArea onClick={() => navigate(`/product/${product.proID}`)}>
+                        <CardActionArea onClick={() => navigate(`/products-one/${product.proID}`)}>
                             <CardMedia
                                 component="img"
                                 height="230"
@@ -267,11 +242,11 @@ function ProductCards({ min, max }) {
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
-                        <Box sx={{ display: 'flex', justifyContent: 'center', backgroundColor: 'pink' }}>
+                        {/* <Box sx={{ display: 'flex', justifyContent: 'center', backgroundColor: 'pink' }}>
                             <Button size="block" sx={{ color: 'white', '&:hover': { backgroundColor: 'pink' } }} onClick={() => handleAddToCart(product.proID)}>
                                 Add to Cart
                             </Button>
-                        </Box>
+                        </Box> */}
                     </Card>
                 </Grid>
             ))}

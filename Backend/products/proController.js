@@ -2,7 +2,7 @@
 
 
 
-const { insertProdData, getProdData } = require('../products/proModel');
+const { insertProdData, getProdData, getSingleProdData } = require('../products/proModel');
 const { handleResponse } = require("../utils");
 
 const proCreate = async (req, res) => {
@@ -32,4 +32,19 @@ const getProducts = async (req, res) => {
         res.send(handleResponse(500, "Error in getting products"));
     }
 }
-module.exports = { proCreate, getProducts };
+
+
+const getSingleProducts = async (req, res) => {
+    const { prodId } = req.params;
+    // return prodid;
+    try {
+        const dbRes = await getSingleProdData(prodId);
+        // return dbRes;
+        console.log(dbRes);
+        res.send(handleResponse(201, "Here you got single product", dbRes));
+    } catch (error) {
+        console.log(error);
+        res.send(handleResponse(500, "Error in getting products"));
+    }
+}
+module.exports = { proCreate, getProducts, getSingleProducts };

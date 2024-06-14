@@ -1,0 +1,20 @@
+
+/* src/pages/ImageZoomEffect/ImageZoom.css */
+.zoom-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    cursor: zoom-in;
+}
+
+.zoom-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.3s;
+}
+
+.zoom-container:hover .zoom-image {
+    opacity: 0;
+}

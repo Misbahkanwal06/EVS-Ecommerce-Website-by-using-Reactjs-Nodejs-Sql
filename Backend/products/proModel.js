@@ -14,7 +14,7 @@ const insertProdData = async (name, price, createdat, updatedat) => {
 const getProdData = async (id, min, max) => {
     try {
         const query1 = `Select * from products p JOIN product_category pc ON pc.proCatId = p.categoryId
-        WHERE  categoryId = ${id}`
+        WHERE categoryId = ${id}`
             ;
         const query2 = `SELECT * 
       FROM products p 
@@ -34,4 +34,16 @@ const getProdData = async (id, min, max) => {
     }
 }
 
-module.exports = { insertProdData, getProdData };
+const getSingleProdData = async (prodid) => {
+    try {
+
+        const query = `Select * from products p JOIN product_category pc ON pc.proCatId = p.categoryId
+        WHERE proID = ${prodid}`;
+        const dbresult = await dbSql.execute(query);
+        return dbresult[0][0];
+    } catch (error) {
+        console.log("error in getting single product", error);
+    }
+
+}
+module.exports = { insertProdData, getProdData, getSingleProdData };
