@@ -10,7 +10,6 @@ import ProductCards from '../../components/ProductsCards/ProductCards';
 import Price from '../../components/Price/Price';
 
 
-
 function ProductsPage() {
 
     const [min, setMin] = useState('');
@@ -22,11 +21,11 @@ function ProductsPage() {
         setIsSidebarVisible(!isSidebarVisible);
     };
 
+
     return (
         <>
             <Navbar toggleSidebar={toggleSidebar} />
             <Price setMin={setMin} setMax={setMax} />
-
             <Box sx={{ p: 2, mt: 2 }}>
                 <Grid container spacing={2}>
                     {isSidebarVisible && (
@@ -36,7 +35,7 @@ function ProductsPage() {
                     )}
                     <Grid item sm={isSidebarVisible ? 7 : 12} xs={12} md={isSidebarVisible ? 9 : 12}>
                         <Box>
-                        <ProductCards min={min} max={max} />
+                            <ProductCards min={min} max={max} />
                         </Box>
                     </Grid>
                 </Grid>

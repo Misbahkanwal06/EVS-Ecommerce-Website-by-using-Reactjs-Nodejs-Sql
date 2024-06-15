@@ -34,9 +34,10 @@ const getProdData = async (id, min, max) => {
     }
 }
 
+
+
 const getSingleProdData = async (prodid) => {
     try {
-
         const query = `Select * from products p JOIN product_category pc ON pc.proCatId = p.categoryId
         WHERE proID = ${prodid}`;
         const dbresult = await dbSql.execute(query);

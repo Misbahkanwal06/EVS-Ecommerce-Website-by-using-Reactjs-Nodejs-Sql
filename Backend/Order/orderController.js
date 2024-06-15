@@ -30,6 +30,7 @@ const { handleResponse, random } = require('../utils');
 
 const createOrder = async (req, res) => {
     const array = req.body;
+    console.log("req.body", req.body);
     // return array;
     try {
         let ordNo = await getlastVAlue();
@@ -39,7 +40,6 @@ const createOrder = async (req, res) => {
         let emptyStr = random(ordNo ? ordNo.ordNo : null);
         // return emptyStr;
         for (let i = 0; i < array.length; i++) {
-            // const { custId, prodid, quantity, price } = array[i];
             const { custId, proID, price, TotalQuantity } = array[i];
             console.log("custId, prodid, quantity, price", custId, proID, price, TotalQuantity);
             const dbres = await getData(custId, TotalQuantity, proID);
@@ -51,13 +51,13 @@ const createOrder = async (req, res) => {
                     amount: price,
                 }
                 let { orderNo, cartId, prodId, quant, createdAt, amount } = orderObject;
-                // console.log("orderNo, cartId, prodId, price, quant, createdAt", orderNo, cartId, prodId, quant, createdAt, amount);
                 // // Order obj ko db me insert kerna hy step 1
                 let dbRESULT = await insertdata(orderNo, cartId, prodId, amount, quant, createdAt);
                 // return dbRESULT;
                 console.log("dbRESULT", dbRESULT);
-                // us cart id ka is order true kerna hy step 2
+                // us cart id ka isorder true kerna hy step 2
                 let response = await updateData(cartId);
+                console.log("response", response);
             }
         }
     } catch (error) {
@@ -81,9 +81,7 @@ const getOrderNo = async (req, res) => {
 const getOrderData = async (req, res) => {
     try {
         const { orderNo } = req.params;
-        // console.log(orderNo)
         // typeof(orderNo);
-        // return orderNo;
         const dbres = await viewOrderNoDetails(orderNo);
         // return dbres;
         res.send(handleResponse(201, "Order Number details", dbres));

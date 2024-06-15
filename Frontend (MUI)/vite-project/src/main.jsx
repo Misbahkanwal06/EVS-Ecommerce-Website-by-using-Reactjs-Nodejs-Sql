@@ -1,17 +1,3 @@
-// import React from 'react'
-// import ReactDOM from 'react-dom/client'
-// import App from './App.jsx'
-// import './index.css'
-// import { BrowserRouter } from 'react-router-dom';
-
-
-
-
-// ReactDOM.createRoot(document.getElementById('root')).render(
-//   <BrowserRouter>
-//     <App />
-//   </BrowserRouter>
-// )
 
 
 import React from 'react';
@@ -19,18 +5,17 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider, createTheme } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
     background: {
-      paper: '#fff', // Set your paper color here
+      paper: '#fff',
     },
     primary: {
-      main: '#1976d2', // Set your primary color here
+      main: '#1976d2',
     },
   },
-  // Other theme customization options
 });
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -41,4 +26,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
+
 );

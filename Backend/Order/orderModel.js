@@ -23,12 +23,9 @@ const getlastVAlue = async () => {
 }
 
 const insertdata = async (orderNo, cartId, prodId, amount, quant, createdAt) => {
-    // console.log(emptyStr,orderNo, cartId, prodId, price, quant, createdAt);
-    console.log("in model");
-    console.log("orderNo,cartId,prodId,price,quant,createdAt", orderNo, cartId, prodId, amount, quant, createdAt);
+    // console.log("orderNo,cartId,prodId,price,quant,createdAt", orderNo, cartId, prodId, amount, quant, createdAt);
     try {
         const insertQuery = "INSERT INTO order_Tbl(`ordNo`,`cardId`,`prodId`,`price`,`quantity`,`createdDate`) VALUES (?,?,?,?,?,?)";
-        //  quant = Number(quant);
         let values = [orderNo, cartId, prodId, amount, quant, createdAt];
         const dbresult = await dbSql.execute(insertQuery, values);
         return dbresult;
