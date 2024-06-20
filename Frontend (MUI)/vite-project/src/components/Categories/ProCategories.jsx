@@ -54,17 +54,15 @@
 
 
 
-
-
-// ProCategories.jsx
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ListItem, ListItemText, Avatar, Divider } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 function ProCategories({ setSidebarCategories }) {
     const [categories, setCategories] = useState([]);
 
+    console.log("categories", categories);
     useEffect(() => {
         const fetchCategories = async () => {
             try {
@@ -78,14 +76,17 @@ function ProCategories({ setSidebarCategories }) {
         fetchCategories();
     }, [setSidebarCategories]);
 
+    
     return (
         <>
-            {categories.map((e) => (
-                <React.Fragment>
-                    <ListItem key={e.proCatId} button sx={{ pl: 4 }}>
-                        <Avatar src={e.image} alt={e.catName} />
-                        <ListItemText primary={e.catName} />
-                    </ListItem>
+            {categories.map((category) => (
+                <React.Fragment key={category.proCatId}>
+                    <Link to={`/products/${category.proCatId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <ListItem button sx={{ pl: 4 }}>
+                            <Avatar src={category.image} alt={category.catName} />
+                            <ListItemText primary={category.catName} />
+                        </ListItem>
+                    </Link>
                     <Divider />
                 </React.Fragment>
             ))}

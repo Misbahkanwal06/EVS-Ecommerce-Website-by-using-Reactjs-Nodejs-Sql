@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -15,6 +16,9 @@ import {
     Button,
     Divider
 } from '@mui/material';
+import numeral from 'numeral';
+
+
 
 function Order() {
     const storageResponse = localStorage.getItem("userdata");
@@ -94,7 +98,7 @@ function Order() {
                                             Total Quantity: {e.totalQty}
                                         </Typography>
                                         <Typography variant="body1" color="error">
-                                            Total Amount: {e.price}
+                                            Total Amount: {numeral(e.price).format('0,0')}
                                         </Typography>
                                     </CardContent>
                                 </Card>
@@ -103,7 +107,7 @@ function Order() {
                         {orderDetails.length > 0 && (
                             <Card sx={{ p: 2, mt: 2, display: 'flex', justifyContent: 'space-between', fontWeight: 'bold' }}>
                                 <Typography variant="body1" color="error">
-                                    Total Amount: {TotalPrice}
+                                    Total Amount: {numeral(TotalPrice).format('0,0')}
                                 </Typography>
                             </Card>
                         )}

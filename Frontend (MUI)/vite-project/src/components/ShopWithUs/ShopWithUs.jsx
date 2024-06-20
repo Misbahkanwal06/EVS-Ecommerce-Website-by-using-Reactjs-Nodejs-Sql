@@ -179,7 +179,7 @@ function ShopWithUs() {
     ];
 
     return (
-        <Box sx={{ p: 2, pl: 10, backgroundColor: '#f5f5f5', mb: 5 }}>
+        <Box sx={{ p: 2, pl: 8, backgroundColor: '#f5f5f5', mb: 5 }}>
             <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
                 Shop with Us
             </Typography>
@@ -187,7 +187,7 @@ function ShopWithUs() {
             <Grid container spacing={3}>
                 {images.map((image, index) => (
                     <Grid item xs={12} sm={6} md={1.9} key={index}>
-                        <Card sx={{ height: '80%', mt: 5, transition: 'transform 0.2s ease-in-out', '&:hover': { transform: 'scale(0.98)' } }}> {/* Apply hover transform and transition */}
+                        <Card sx={{ height: '80%', mt: 5, transition: 'transform 0.2s ease-in-out', '&:hover': { transform: 'scale(0.97)' } }}> {/* Apply hover transform and transition */}
                             <CardMedia
                                 component="img"
                                 height="200"

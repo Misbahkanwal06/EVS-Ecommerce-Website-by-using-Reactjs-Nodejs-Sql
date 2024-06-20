@@ -112,6 +112,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Box, Card, CardContent, Typography, Button } from '@mui/material';
 import ImageZoom from '../ImageZoomEffect/ImageZoom';
+import numeral from 'numeral';
+
 
 const SingleProdCard = () => {
     const [singleProduct, setSingleProduct] = useState({});
@@ -148,7 +150,7 @@ const SingleProdCard = () => {
                 try {
                     const res = await axios.post('http://localhost:3008/api/v1/cart/create', payloads);
                     // res && res.data &&
-                     navigate('/cart');
+                    navigate('/cart');
                 } catch (error) {
                     console.error('Error getting categories', error);
                 }
@@ -169,10 +171,10 @@ const SingleProdCard = () => {
                             {`Women Collection Of ${singleProduct.proName}`}
                         </Typography>
                         <Typography component="div" variant="h5" sx={{ color: 'red', mt: 2 }}>
-                            {`Rs. ${singleProduct.price}`}
+                            {`Rs. ${numeral(singleProduct.price).format('0,0')}`}
                         </Typography>
                         <Typography component="div" variant="body1" sx={{ textDecoration: 'line-through', mt: 2 }}>
-                            {`Rs. ${singleProduct.price}`}
+                            {`Rs. ${numeral(singleProduct.price).format('0,0')}`}
                         </Typography>
                         <Box sx={{ display: 'flex', mt: 5 }}>
                             <Button

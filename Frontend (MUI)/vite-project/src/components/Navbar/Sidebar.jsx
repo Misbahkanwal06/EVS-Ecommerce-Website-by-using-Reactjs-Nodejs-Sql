@@ -19,7 +19,7 @@ const Sidebar = () => {
 
 
     return (
-        <SidebarBox sx={{ backgroundColor: 'white' }}>
+        <SidebarBox sx={{ backgroundColor: 'white', height:'auto' }}>
             <List>
                 {listItems.map((item, index) => (
                     <React.Fragment key={index}>

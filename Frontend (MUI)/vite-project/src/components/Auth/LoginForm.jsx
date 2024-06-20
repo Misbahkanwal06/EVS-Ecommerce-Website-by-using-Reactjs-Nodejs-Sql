@@ -1,10 +1,14 @@
+
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { Container, Grid, Paper, Typography, TextField, Button, Box } from '@mui/material';
+import { setStorageItem } from '../../utils/helperFunctions';
+
 
 function LoginForm() {
-
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -16,9 +20,9 @@ function LoginForm() {
             const res = await axios.post('http://localhost:3008/api/v1/customer/login', user);
             if (res.data.send === 'Successful login') {
                 let { obj } = res.data;
-                localStorage.setItem('userdata', JSON.stringify(obj));
+                setStorageItem("userdata", obj);
                 alert('Successful login');
-                navigate('/'); // Redirect to home after successful login
+                navigate('/');
             } else {
                 alert('Invalid Email or password');
             }
