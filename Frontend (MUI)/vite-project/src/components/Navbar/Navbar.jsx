@@ -495,7 +495,6 @@ function Navbar({ toggleSidebar, sum }) {
                                 </IconButton>
                             </Tooltip>
                         </Box>
-
                     </Toolbar>
                 </Container>
             </AppBar>

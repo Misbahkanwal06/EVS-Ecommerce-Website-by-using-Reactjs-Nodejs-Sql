@@ -370,13 +370,14 @@ function CartCards() {
                                         <Grid item xs={6} sm={4}>
                                             <Typography className="fw-bold">{product.proName}</Typography>
                                             <Typography color="error">Rs.{numeral(product.price).format('0,0')}</Typography>
-
                                         </Grid>
                                         <Grid item xs={12} sm={4} textAlign={{ xs: 'center', sm: 'right' }}>
                                             <Box display="flex" alignItems="center" justifyContent={{ xs: 'center', sm: 'flex-end' }}>
-                                                <StyledButton onClick={() => handleMinusClick(index)}>-</StyledButton>
-                                                <Box mx={1} >{product.TotalQuantity}</Box>
-                                                <StyledButton onClick={() => handleAddClick(index)} >+</StyledButton>
+                                                <StyledButton
+                                                    onClick={() => handleMinusClick(index)}>-</StyledButton>
+                                                <Box mx={1} > {product.TotalQuantity}</Box>
+                                                <StyledButton
+                                                    onClick={() => handleAddClick(index)} >+</StyledButton>
                                             </Box>
                                         </Grid>
 
